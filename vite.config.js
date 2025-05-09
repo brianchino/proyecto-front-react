@@ -3,6 +3,6 @@ import react from '@vitejs/plugin-react'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/proyecto-front-react/',
   plugins: [react()],
+  base: 'https://brianchino.github.io/proyecto-front-react/',
 })
