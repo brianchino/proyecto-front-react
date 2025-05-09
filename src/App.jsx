@@ -1,33 +1,37 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { BrowserRouter ,Link,Routes,Route} from "react-router-dom";
 import './App.css'
+import Home from './pages/Home';
+import Productos from './pages/Productos';
+import Electronica from './pages/Electronica';
+import Login from './pages/Login';
+import Carrito from './pages/Carrito';
 
 function App() {
-  const [count, setCount] = useState(0)
+  
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <BrowserRouter>
+            <nav>
+                <Link className='link' to='/'>logo</Link>
+                <div className='navBar'>
+                  <Link className='link' to='/'>home</Link>
+                  <Link className='link' to='/productos'>productos</Link>
+                  <Link className='link' to='/electronica'>electronica</Link>
+                  <Link className='link' to='/Login'>login</Link>
+                  <Link className='link' to='/carrito'><i>carro</i></Link>
+                </div>
+            </nav>
+            <Routes>
+              <Route path='/' element={<Home />}></Route>
+              <Route path='/productos' element={<Productos />}></Route>
+              <Route path='/electronica' element={<Electronica />}></Route>
+              <Route path='/Login' element={<Login />}></Route>
+              <Route path='/carrito' element={<Carrito />}></Route>
+            </Routes>
+            <footer>pie de pagina</footer>
+        </BrowserRouter>
     </>
   )
 }
