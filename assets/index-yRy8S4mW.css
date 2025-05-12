@@ -1,0 +1,1 @@
+*{margin:0;box-sizing:border-box}.link{color:#f3f4f6;margin:auto 10px;font-size:2em;cursor:pointer;text-decoration:none;transition:color .2s ease}.link:hover{color:#ee8282}nav,footer{display:flex;justify-content:space-between;background-color:#593d3d;height:3.5em}.navBar{height:100%;display:flex;align-items:center}.page{height:calc(100vh - 7em);color:green;background-color:#0ff}
