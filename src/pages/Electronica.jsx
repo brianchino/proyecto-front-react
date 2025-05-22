@@ -1,6 +1,7 @@
+import '../stylePages/page.css'
 function Electronica(){
     return(
-        <div>contenido</div>
+        <div className='page'>contenido</div>
     )
 }
 export default Electronica;

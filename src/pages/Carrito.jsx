@@ -1,6 +1,8 @@
+import '../stylePages/page.css'
 function Carrito(){
+
     return(
-        <div>contenido</div>
+        <div className='page'>contenido</div>
     )
 }
 export default Carrito;
