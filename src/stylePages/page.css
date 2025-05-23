@@ -1,6 +1,5 @@
 .page{
 min-height: calc(100vh - 7em);
-color:green;
 background-color: rgb(214, 219, 247);
 padding: 1em;
 }

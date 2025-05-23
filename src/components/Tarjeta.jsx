@@ -1,7 +1,8 @@
 import '../styleComponents/tarjeta.css'
-function Tarjeta({producto}){
+function Tarjeta({producto,productosCarrito,setProductosCarrito,agregarCarrito}){
+    
     return(
-        <div className="tarjeta-producto">
+    <div className="tarjeta-producto">
       <img
         className="imagen-producto"
         src={producto.image}
@@ -12,8 +13,11 @@ function Tarjeta({producto}){
         <p className="precio-producto">${producto.price.toFixed(2)}</p>
         <p className="rating-producto">⭐ {producto.rating.rate} ({producto.rating.count})</p>
       </div>
-      <button className='boton-agregar'>agregar</button>
+      {agregarCarrito &&
+      <button className='boton-agregar' onClick={() => {agregarCarrito(producto.id,productosCarrito,setProductosCarrito)}}>agregar</button>
+
+      }
     </div>
     )
 }
-export default Tarjeta
+export default Tarjeta;

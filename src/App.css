@@ -26,3 +26,16 @@ nav, footer{
   display: flex;
   align-items: center;
 }
+.boton-cerrar-sesion{
+  background-color: #303050;
+  transition: color 0.2s ease;
+  font-family: inherit;
+  font-size: 1.5em;
+  font-weight: 200;
+  color: #ed5d5d;
+}
+
+.boton-cerrar-sesion:hover{
+  background-color: #303050;
+  color: #ee8282;
+}
