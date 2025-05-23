@@ -23,6 +23,14 @@ nav, footer{
   height: 3.5em;
   
 }
+footer div{
+  margin:auto;
+}
+footer *{
+  color:white;
+  font-size: x-large;
+  margin-inline-start: 10px;
+}
 .navBar{
   height: 100%;
   display: flex;

@@ -8,7 +8,11 @@ import Login from './pages/Login';
 import Carrito from './pages/Carrito';
 import RutaProtegida from './components/RutaProtegida';
 import Perfil from './pages/Perfil';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCopyright } from '@fortawesome/free-regular-svg-icons';
+import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
 
+import { faCartShopping,faFaceSmileBeam} from '@fortawesome/free-solid-svg-icons';
 
 function App() {
   const [productos,setProductos] = useState([]);
@@ -50,7 +54,7 @@ function App() {
 
       
             <nav>
-                <Link className='link' to='/'>logo</Link>
+                <Link className='link' to='/'><FontAwesomeIcon icon={faFaceSmileBeam} /></Link>
                 <div className='navBar'>
                   <Link className='link' to='/'>home</Link>
                   <Link className='link' to='/productos'>productos</Link>
@@ -64,7 +68,7 @@ function App() {
                     <button className='boton-cerrar-sesion' onClick={cerrarSesion}>CerrarSession</button>
                   )}
                   
-                  <Link className='link' to='/carrito'><i>carro</i></Link>
+                  <Link className='link' to='/carrito'><FontAwesomeIcon icon={faCartShopping} /></Link>
 
                 </div>
             </nav>
@@ -79,7 +83,14 @@ function App() {
               <Route path='/carrito' element={<Carrito productosCarrito={productosCarrito} />} />
               <Route path='/perfil/:usuario' element={<RutaProtegida> <Perfil/> </RutaProtegida>}></Route>
             </Routes>
-            <footer>pie de pagina</footer>
+            <footer>
+              <div>
+                <FontAwesomeIcon  icon={faCopyright} />
+                <FontAwesomeIcon icon={faFacebook} />
+                <FontAwesomeIcon icon={faTwitter} />
+                <FontAwesomeIcon icon={faInstagram} />
+              </div>
+            </footer>
         
     </>
   )
