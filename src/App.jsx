@@ -8,6 +8,8 @@ import Login from './pages/Login';
 import Carrito from './pages/Carrito';
 import RutaProtegida from './components/RutaProtegida';
 import Perfil from './pages/Perfil';
+
+
 function App() {
   const [productos,setProductos] = useState([]);
   const [cargando,setCargando] = useState(true);
@@ -28,7 +30,7 @@ function App() {
  
    const [productosCarrito,setProductosCarrito] = useState([])
 
-  function agregarCarrito(id,productosCarrito,setProductosCarrito){
+   function agregarCarrito(id){
     const productoNuevo = productos.find(producto => producto.id === id)
     setProductosCarrito([...productosCarrito,productoNuevo])
     console.log(productosCarrito)
@@ -70,9 +72,9 @@ function App() {
               <Route path='/' element={<Home />} />
 
               <Route path='/productos' element={<Productos  productos={productos} cargando={cargando} error={error}
-              productosCarrito={productosCarrito} setProductosCarrito={setProductosCarrito} agregarCarrito={agregarCarrito}/>} />
+               agregarCarrito={agregarCarrito}/>} />
 
-              <Route path='/electronica' element={<Electronica />} />
+              <Route path='/electronica' element={<Electronica productos= {productos} agregarCarrito={agregarCarrito}/>} />
               <Route path='/Login' element={<Login />}/>
               <Route path='/carrito' element={<Carrito productosCarrito={productosCarrito} />} />
               <Route path='/perfil/:usuario' element={<RutaProtegida> <Perfil/> </RutaProtegida>}></Route>
@@ -84,3 +86,4 @@ function App() {
 }
 
 export default App
+

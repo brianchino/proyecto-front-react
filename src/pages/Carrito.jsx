@@ -6,7 +6,7 @@ function Carrito({productosCarrito}){
         <div className='page'>
             {
                 productosCarrito.map((producto) => 
-                <Tarjeta key={producto.id} producto={producto} />
+                <Tarjeta key={producto.id} producto={producto} forShop={false}/>
                 )
             }
         </div>
