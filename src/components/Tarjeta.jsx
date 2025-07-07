@@ -1,7 +1,29 @@
+import { useContext } from 'react';
 import '../styleComponents/tarjeta.css'
+import styled from 'styled-components'
+import { CarritoContext } from '../context/CarritoContext';
 
-function Tarjeta({producto,forShop,agregarCarrito}){
-    
+const BotonCompra = styled.button`
+  
+       padding: 0.5em 1em;
+       background-color: #3483fa;
+       color: white;
+       border: none;
+       border-radius: 5px;
+       font-size: 0.85em;
+       font-weight: bold;
+       cursor: pointer;
+       transition: background-color 0.2s ease;
+       margin: 0.5em;
+
+       &:hover {
+         background-color: #2968c8;
+       }`;
+
+function Tarjeta({producto,forShop}){
+    const{agregarCarrito,eliminarDeCarrito} = useContext(CarritoContext)
+    const isAuth = localStorage.getItem('auth') === 'true'  
+     
     return(
     <div className="tarjeta-producto">
       <img
@@ -12,12 +34,15 @@ function Tarjeta({producto,forShop,agregarCarrito}){
       <div className="contenido-producto">
         <h4 className="titulo-producto">{producto.title}</h4>
         <p className="precio-producto">${producto.price.toFixed(2)}</p>
-        <p className="rating-producto">⭐ {producto.rating.rate} ({producto.rating.count})</p>
+        {/* <p className="rating-producto">⭐ {producto.rating.rate} ({producto.rating.count})</p> */}
       </div>
-      {forShop &&
-      <button className='boton-agregar' onClick={() => {agregarCarrito(producto.id)}}>agregar</button>
-
+      {forShop && isAuth &&
+      <BotonCompra  onClick={() => {agregarCarrito(producto.id)}}>agregar</BotonCompra>
       }
+      {!forShop &&
+      <BotonCompra onClick={()=>{eliminarDeCarrito(producto.id)}}>eliminar</BotonCompra>
+      }
+      
     </div>
     )
 }

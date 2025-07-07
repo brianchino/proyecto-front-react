@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react'
-import { BrowserRouter ,Link,Routes,Route, useNavigate} from "react-router-dom";
+import {Link,Routes,Route, useNavigate} from "react-router-dom";
 import './App.css'
 import Home from './pages/Home';
 import Productos from './pages/Productos';
@@ -14,33 +13,13 @@ import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg
 
 import { faCartShopping,faFaceSmileBeam} from '@fortawesome/free-solid-svg-icons';
 
+
 function App() {
-  const [productos,setProductos] = useState([]);
-  const [cargando,setCargando] = useState(true);
-  const[error,setError] = useState(null);
 
-  useEffect(()=>{
-    fetch('https://fakestoreapi.com/products')
-      .then((respuesta) => respuesta.json())
-      .then((datos) => {
-        setProductos(datos)
-        setCargando(false)
-      })
-      .catch((error) => {
-        setError('hubo un error')
-        setCargando(false)
-      })
-  },[])
- 
-   const [productosCarrito,setProductosCarrito] = useState([])
 
-   function agregarCarrito(id){
-    const productoNuevo = productos.find(producto => producto.id === id)
-    setProductosCarrito([...productosCarrito,productoNuevo])
-    console.log(productosCarrito)
-  }
+   
 
-  const isAuth = localStorage.getItem('auth') === 'true'  
+  const isAuth = localStorage.getItem('auth') 
   const navigate = useNavigate()
 
   const cerrarSesion = () => {
@@ -60,27 +39,32 @@ function App() {
                   <Link className='link' to='/productos'>productos</Link>
                   <Link className='link' to='/electronica'>electronica</Link>
                   {isAuth && (
-                    <Link className='link' to='/perfil/usuario123'>perfil</Link>       
+                    <>
+                      <Link className='link' to={`/perfil/${localStorage.getItem('usuario')}`}>perfil</Link>
+                      <Link className='link' to='/carrito'>
+                        <FontAwesomeIcon icon={faCartShopping} />
+                      </Link>
+                    </>
                   )}
                   {!isAuth ? (
-                    <Link className='link' to='/Login'>login</Link>
+                    <Link className='link' to='/login'>login</Link>
                   ): (
-                    <button className='boton-cerrar-sesion' onClick={cerrarSesion}>CerrarSession</button>
+                    // <button className='boton-cerrar-sesion' onClick={cerrarSesion}>CerrarSession</button>
+                    <Link className='link' to='/' onClick={cerrarSesion}>cerrar Sesion</Link>
                   )}
                   
-                  <Link className='link' to='/carrito'><FontAwesomeIcon icon={faCartShopping} /></Link>
+                  
 
                 </div>
             </nav>
             <Routes>
               <Route path='/' element={<Home />} />
 
-              <Route path='/productos' element={<Productos  productos={productos} cargando={cargando} error={error}
-               agregarCarrito={agregarCarrito}/>} />
+              <Route path='/productos' element={<Productos/>} />
 
-              <Route path='/electronica' element={<Electronica productos= {productos} agregarCarrito={agregarCarrito}/>} />
-              <Route path='/Login' element={<Login />}/>
-              <Route path='/carrito' element={<Carrito productosCarrito={productosCarrito} />} />
+              <Route path='/electronica' element={<Electronica />} />
+              <Route path='/login' element={<Login />}/>
+              <Route path='/carrito' element={<RutaProtegida><Carrito /></RutaProtegida>} />
               <Route path='/perfil/:usuario' element={<RutaProtegida> <Perfil/> </RutaProtegida>}></Route>
             </Routes>
             <footer>

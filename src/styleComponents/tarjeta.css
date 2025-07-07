@@ -8,7 +8,7 @@
   font-family: Arial, sans-serif;
   transition: transform 0.2s;
   cursor: pointer;
-  margin: 1em;
+  margin: 1em auto;
   max-height: 25em;
   display:flex;
   flex-direction: column;
@@ -51,20 +51,4 @@
   font-size: 13px;
   color: #888;
 }
-.boton-agregar {
-  padding: 0.5em 1em;
-  background-color: #3483fa;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 0.85em;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  margin: 0.5em;
-  
-}
 
-.boton-agregar:hover {
-  background-color: #2968c8;
-}

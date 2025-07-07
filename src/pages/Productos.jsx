@@ -1,15 +1,21 @@
 import Tarjeta from '../components/Tarjeta';
-import '../stylePages/productos.css'
+// import '../stylePages/productos.css'
 import '../stylePages/page.css'
-
-function Productos({productos,cargando,error,agregarCarrito}){
-    if(cargando) return <p> cargando productos</p>
-    if(error) return <p>{error}</p>
+import { ProductosContext } from '../context/ProductosContext';
+import {useContext} from 'react'
+import {Col, Row} from 'react-bootstrap'
+function Productos(){
+    const {productos} = useContext(ProductosContext)
     return(
-        <div className="page productos">
-            {
-                productos.map((producto) => <Tarjeta key={producto.id} producto={producto} forShop= {true} agregarCarrito={agregarCarrito}/>)
-            }
+        <div className='page'>
+            <Row>
+                   {productos.map((producto) =>(
+                        <div key={producto.id} className=" col-12 col-md-4 col-lg-3">
+                             <Tarjeta key={producto.id} producto={producto} forShop= {true} />
+                    
+                        </div>
+                    ))}
+            </Row>
         </div>
     )
 }
