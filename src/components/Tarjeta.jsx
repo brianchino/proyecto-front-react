@@ -22,7 +22,7 @@ const BotonCompra = styled.button`
 
 function Tarjeta({producto,forShop}){
     const{agregarCarrito,eliminarDeCarrito} = useContext(CarritoContext)
-    const isAuth = localStorage.getItem('auth') === 'true'  
+    const isAuth = localStorage.getItem('isAuth') === 'true'  
      
     return(
     <div className="tarjeta-producto">

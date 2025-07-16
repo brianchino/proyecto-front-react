@@ -1,0 +1,33 @@
+.admin form{
+    
+
+}
+.admin button {
+  background-color: #2563eb;
+  color: white;
+  padding: 0.75rem;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-right: 2rem;
+}
+
+.admin button:hover {
+  background-color: #1d4ed8;
+}
+.admin input[type="text"]
+ {
+    
+  padding: 0.6rem 0.8rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1.5px solid #ccc;
+  margin: 0.5rem 1rem ;
+  transition: border-color 0.3s;
+}
+.admin .inputs{
+    border-bottom: solid rgb(223, 199, 225) 2px; 
+}

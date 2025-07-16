@@ -13,21 +13,26 @@ function Login(){
     const manejoLogin = (e,usuario,contrasena) => {
         e.preventDefault();
         if(usuario != '' && contrasena != ''){
-
-            if (usuario=='admin' && contrasena == '123'){
-                
+            localStorage.setItem('usuario',usuario);
+            localStorage.setItem('contraseña',contrasena);
+            localStorage.setItem('isAuth',true)
+            //setIsAuth(true)
+            if (usuario == 'admin' && contrasena == '123') {
+                localStorage.setItem('isAdmin',true)
+                // setIsAdmin(true);
+            } 
+            else {
+                localStorage.setItem('isAdmin',false)
+                //setIsAdmin(false); 
             }
-            else
-            {
-                localStorage.setItem('usuario',usuario);
-                localStorage.setItem('contraseña',contrasena);
-                localStorage.setItem('auth',true)
-            }
-            navigate(`/perfil/${usuario}`)
+                navigate(`/perfil/${usuario}`)
+        }
+        else{
+            console.log('usuario y contraseña vacia')
         }
     }
     return(
-        <div className='page'>
+        <div className='page login'>
             <h1>INICIAR SESION</h1>
             <form action="/" method='post'>
                 <label htmlFor='usuario'>usuario: </label>
