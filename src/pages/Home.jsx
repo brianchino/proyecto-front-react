@@ -2,7 +2,7 @@ import '../stylePages/page.css'
 import '../stylePages/home.css';
 function Home(){
     return(
-        <div className='page'>
+        <div className='page home'>
             <section className="bienvenida">
             <h1>Bienvenido a ChinoShop</h1>
                 <p>

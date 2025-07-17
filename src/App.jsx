@@ -32,13 +32,15 @@ function App() {
     navigate('/login');
   }
   
+  const [busqueda,setBusqueda] = useState('')
   
   return (
-    <>
+    <div className='app'>
 
       
             <nav>
                 <Link className='link' to='/'><FontAwesomeIcon icon={faFaceSmileBeam} /></Link>
+                <input type="text" className="busqueda" placeholder='busqueda'onChange={(e)=> setBusqueda(e.target.value)}/>
                 <div className='navBar'>
                   <Link className='link' to='/'>home</Link>
                   <Link className='link' to='/productos'>productos</Link>
@@ -70,9 +72,9 @@ function App() {
             <Routes>
               <Route path='/' element={<Home />} />
 
-              <Route path='/productos' element={<Productos/>} />
+              <Route path='/productos' element={<Productos busqueda={busqueda}/>} />
 
-              <Route path='/electronica' element={<Electronica />} />
+              <Route path='/electronica' element={<Electronica busqueda={busqueda} />} />
               <Route path='/login' element={<Login />}/>
               <Route path='/carrito' element={<RutaProtegida ><Carrito /></RutaProtegida>} />
               <Route path='/perfil/:usuario' element={<RutaProtegida > <Perfil/> </RutaProtegida>}></Route>
@@ -87,7 +89,7 @@ function App() {
               </div>
             </footer>
         
-    </>
+    </div>
   )
 }
 

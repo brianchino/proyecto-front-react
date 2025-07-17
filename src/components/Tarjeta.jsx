@@ -25,7 +25,7 @@ function Tarjeta({producto,forShop}){
     const isAuth = localStorage.getItem('isAuth') === 'true'  
      
     return(
-    <div className="tarjeta-producto">
+    <div className="tarjeta">
       <img
         className="imagen-producto"
         src={producto.image}

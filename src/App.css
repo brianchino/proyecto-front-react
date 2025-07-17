@@ -4,7 +4,7 @@
   margin: 0;
   box-sizing: border-box;
 }
-.link{
+.app .link{
   color: #f3f4f6; 
   margin: auto 10px;
   font-size: 1.5em;
@@ -14,30 +14,30 @@
   font-weight: bolder;
   
 }
-.link:hover{
+.app .link:hover{
   color: #ee8282;
 }
-nav, footer{
+.app nav, .app footer{
   display: flex;
   justify-content: space-between;
   background-color: #303050; 
   height: 3.5em;
   
 }
-footer div{
+.app footer div{
   margin:auto;
 }
-footer *{
+.app footer *{
   color:white;
   font-size: x-large;
   margin-inline-start: 10px;
 }
-.navBar{
+.app .navBar{
   height: 100%;
   display: flex;
   align-items: center;
 }
-.boton-cerrar-sesion{
+.app .boton-cerrar-sesion{
   background-color: #303050;
   transition: color 0.2s ease;
   font-family: inherit;
@@ -46,7 +46,14 @@ footer *{
   color: #ed5d5d;
 }
 
-.boton-cerrar-sesion:hover{
+.app .boton-cerrar-sesion:hover{
   background-color: #303050;
   color: #ee8282;
+}
+.app  .busqueda{
+  height: 2em;
+  margin:auto;
+  border-radius: 10px;
+  width: 40%;
+  
 }
