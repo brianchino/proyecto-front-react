@@ -1,7 +1,4 @@
-.admin form{
-    
 
-}
 .admin button {
   background-color: #2563eb;
   color: white;
@@ -18,7 +15,7 @@
 .admin button:hover {
   background-color: #1d4ed8;
 }
-.admin input[type="text"]
+.admin input
  {
     
   padding: 0.6rem 0.8rem;

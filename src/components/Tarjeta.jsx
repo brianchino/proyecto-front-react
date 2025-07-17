@@ -33,7 +33,7 @@ function Tarjeta({producto,forShop}){
       />
       <div className="contenido-producto">
         <h4 className="titulo-producto">{producto.title}</h4>
-        <p className="precio-producto">${producto.price.toFixed(2)}</p>
+        <p className="precio-producto">${Number(producto.price).toFixed(2)}</p>
         {/* <p className="rating-producto">⭐ {producto.rating.rate} ({producto.rating.count})</p> */}
       </div>
       {forShop && isAuth &&

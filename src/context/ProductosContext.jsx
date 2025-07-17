@@ -19,10 +19,32 @@ export function ProductosProvider ({children}){
 
     useEffect(()=>{fetchProductos()},[])
     
-    
+    async function crearProducto(nuevoProducto) {
+ 
+    await fetch(API_URL,{
+      method:'POST',
+      headers:{"Content-Type": "application/json"},
+      body: JSON.stringify(nuevoProducto)
+    })
+    fetchProductos()
+  }
+  async function eliminarProducto(id){
+    await fetch(`${API_URL}/${id}`,{
+      method:'DELETE'
+    })
+    fetchProductos()  
+  }
+  async function actualizarProducto(id,nuevoProducto) {
+    await fetch(`${API_URL}/${id}`,{
+      method:'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(nuevoProducto),
+    })
+    fetchProductos() 
+  }
 
     return(
-        <ProductosContext.Provider value={{productos}}>
+        <ProductosContext.Provider value={{productos,crearProducto,eliminarProducto,actualizarProducto}}>
             {children}
         </ProductosContext.Provider>
     )
