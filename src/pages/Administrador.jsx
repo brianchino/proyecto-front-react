@@ -5,11 +5,11 @@ import { ProductosContext } from '../context/ProductosContext';
 function Administrador (){
 
     const {productos,actualizarProducto,eliminarProducto,crearProducto} = useContext(ProductosContext)
-    const [permitirEditar,setPermitirEditar] = useState(false)
+    const [productoEditandoId, setProductoEditandoId] = useState(null);
     const [formData,setFormData] = useState({})
     
     function handleEditar(producto){
-        setPermitirEditar(true)
+        setProductoEditandoId(producto.id);
         setFormData({ ...producto });
     }
     function handleChange(campo,valor){
@@ -56,38 +56,38 @@ function Administrador (){
                 {productos.map(producto => (
                     <div className="producto-form" key={producto.id}>
                         <span className="producto-label">producto n° {producto.id}</span>
-                        <div className="inputs">
-                          <input type="text" 
-                                placeholder="titulo" 
-                                defaultValue={permitirEditar ? formData.title : producto.title}
-                                disabled={!(permitirEditar)}
-                                onChange={(e) => handleChange('title', e.target.value)}/>
-                          <input type="number" 
-                                placeholder="precio" 
-                                defaultValue={producto.price} 
-                                disabled={!(permitirEditar)}
-                                onChange={(e) => handleChange('price', e.target.value)}/>
-                          <input type="text" 
-                                placeholder="categoria" 
-                                defaultValue={producto.category} 
-                                disabled={!(permitirEditar)}
-                                onChange={(e) => handleChange('category', e.target.value)}/>
-                          <input type="text" 
-                                placeholder="imagen" 
-                                defaultValue={producto.image} 
-                                disabled={!(permitirEditar)}
-                                onChange={(e) => handleChange('image', e.target.value)}/>
-                          {!permitirEditar ?(
-                           <div>
+                            <div className="inputs">
+                                <input type="text" 
+                                    placeholder="titulo" 
+                                    defaultValue={producto.title}
+                                    disabled={productoEditandoId !== producto.id}
+                                    onChange={(e) => handleChange('title', e.target.value)}/>
+                                <input type="number" 
+                                    placeholder="precio" 
+                                    defaultValue={producto.price} 
+                                    disabled={productoEditandoId !== producto.id}
+                                    onChange={(e) => handleChange('price', e.target.value)}/>
+                                <input type="text" 
+                                    placeholder="categoria" 
+                                    defaultValue={producto.category} 
+                                    disabled={productoEditandoId !== producto.id}
+                                    onChange={(e) => handleChange('category', e.target.value)}/>
+                                <input type="text" 
+                                    placeholder="imagen" 
+                                    defaultValue={producto.image} 
+                                    disabled={productoEditandoId !== producto.id}
+                                    onChange={(e) => handleChange('image', e.target.value)}/>
+                                {(productoEditandoId !== producto.id) ?(
+                                    <div>
 
-                                <button onClick={()=>handleEditar(producto)}>editar</button>
-                                <button onClick={()=>eliminarProducto()}>eliminar</button>
-                                
-                           </div>   ):(
-                            <button onClick={()=>actualizarProducto(formData.id,formData)}>ok</button>
-                           )  
-                          }
-                        </div>
+                                        <button type="button" onClick={()=>handleEditar(producto)}>editar</button>
+                                        <button type="button" className='botonEliminar'onClick={()=>eliminarProducto(producto.id)}>eliminar</button>
+
+                                    </div>   ):(
+                                    <button type="button" onClick={()=>{actualizarProducto(formData.id, formData);
+                                                            setProductoEditandoId(null);}}>ok</button>
+                                )}
+                            </div>
                         
                         
                     </div>
@@ -96,18 +96,22 @@ function Administrador (){
             <div>
                 <div className="inputs">
                               <input type="text" 
-                                    placeholder="titulo"                              
+                                    placeholder="titulo"    
+                                    value={productoCreado.title}                          
                                     onChange={(e)=>handleChangeCreate('title',e.target.value)}/>
                               <input type="number" 
-                                    placeholder="precio"                              
+                                    placeholder="precio"      
+                                    value={productoCreado.price}                        
                                     onChange={(e)=>handleChangeCreate('price',e.target.value)}/>
                               <input type="text" 
-                                    placeholder="categoria"                                 
+                                    placeholder="categoria" 
+                                    value={productoCreado.category}                                
                                     onChange={(e)=>handleChangeCreate('category',e.target.value)}/>
                               <input type="text" 
-                                    placeholder="imagen"                   
+                                    placeholder="imagen"     
+                                    value={productoCreado.image}              
                                     onChange={(e)=>handleChangeCreate('image',e.target.value)}/>
-                <button onClick={()=>handleCreate(productoCreado)}>crear</button>             
+                <button type="button" className='botonCrear'onClick={()=>handleCreate(productoCreado)}>crear</button>             
                 </div>
             </div>
                           

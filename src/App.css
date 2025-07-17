@@ -7,10 +7,11 @@
 .link{
   color: #f3f4f6; 
   margin: auto 10px;
-  font-size: 2em;
+  font-size: 1.5em;
   cursor: pointer;
   text-decoration: none;
   transition: color 0.2s ease;
+  font-weight: bolder;
   
 }
 .link:hover{

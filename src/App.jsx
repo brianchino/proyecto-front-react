@@ -52,7 +52,7 @@ function App() {
                       <Link className='link' to='/carrito'>
                         <FontAwesomeIcon icon={faCartShopping} />
                       </Link>
-                      <Link className='link' to='/' onClick={cerrarSesion}>cerrar Sesion</Link>
+                      <Link className='link' to='/' onClick={cerrarSesion}>logout</Link>
                       {
                         ((localStorage.getItem('isAdmin')) == 'true') && (
                             <Link className="link" to='/administrador'>admin</Link>

@@ -26,5 +26,22 @@
   transition: border-color 0.3s;
 }
 .admin .inputs{
-    border-bottom: solid rgb(223, 199, 225) 2px; 
+    
+    display: flex;
+    align-items: center;
+    border-bottom: solid rgb(223, 199, 225) 2px;
+    padding: 1rem 0; /* opcional para dar espacio */
+    flex-wrap: wrap; /* por si el contenedor es muy chico */
+}
+.admin .botonEliminar{
+  background-color:red;
+}
+.admin .botonCrear{
+  background-color:green;
+}
+.admin .botonEliminar:hover{
+  background-color:rgb(156, 1, 1);
+}
+.admin .botonCrear:hover{
+  background-color:rgb(0, 67, 0);
 }
