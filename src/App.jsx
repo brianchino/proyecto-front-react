@@ -11,9 +11,9 @@ import Administrador from './pages/Administrador';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCopyright } from '@fortawesome/free-regular-svg-icons';
 import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
-
-import { faCartShopping,faFaceSmileBeam} from '@fortawesome/free-solid-svg-icons';
-import { useState } from "react";
+import { faCartShopping,faFaceSmileBeam,faRightToBracket, faRightFromBracket,faGear} from '@fortawesome/free-solid-svg-icons';
+import { useContext, useState } from "react";
+import { AuthContext } from "./context/authContext";
 
 
 function App() {
@@ -27,13 +27,15 @@ function App() {
    
     localStorage.removeItem('usuario');
     localStorage.removeItem('contraseña');
-    localStorage.setItem('isAuth',false);
-    localStorage.setItem('isAdmin',false);
+    setAuth(false)
+    setAdmin(false)
     navigate('/login');
   }
   
   const [busqueda,setBusqueda] = useState('')
   
+  const {auth,admin,setAuth,setAdmin} = useContext(AuthContext)
+
   return (
     <div className='app'>
            
@@ -45,8 +47,8 @@ function App() {
                   <Link className='link' to='/'>home</Link>
                   <Link className='link' to='/productos'>productos</Link>
                   <Link className='link' to='/electronica'>electronica</Link>
-                  {((localStorage.getItem('isAuth')) == 'false') ? (
-                    <Link className='link' to='/login'>login</Link>
+                  {!(auth) ? (
+                    <Link className='link' to='/login'><FontAwesomeIcon icon={faRightToBracket} /></Link>
                   ): (
                     // <button className='boton-cerrar-sesion' onClick={cerrarSesion}>CerrarSession</button>
                       <>
@@ -54,10 +56,10 @@ function App() {
                       <Link className='link' to='/carrito'>
                         <FontAwesomeIcon icon={faCartShopping} />
                       </Link>
-                      <Link className='link' to='/' onClick={cerrarSesion}>logout</Link>
+                      <Link className='link' to='/' onClick={cerrarSesion}><FontAwesomeIcon icon={faRightFromBracket} /></Link>
                       {
-                        ((localStorage.getItem('isAdmin')) == 'true') && (
-                            <Link className="link" to='/administrador'>admin</Link>
+                        (admin) && (
+                            <Link className="link" to='/administrador'><FontAwesomeIcon icon={faGear} /></Link>
                         )
                         
                       }

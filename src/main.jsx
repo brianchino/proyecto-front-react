@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App.jsx'
 import { ProductosProvider } from './context/ProductosContext.jsx';
 import {CarritoProvider} from './context/CarritoContext.jsx'
+import { AuthProvider } from './context/authContext.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { HelmetProvider } from 'react-helmet-async'
 createRoot(document.getElementById('root')).render(
@@ -11,7 +12,7 @@ createRoot(document.getElementById('root')).render(
     <HelmetProvider>
 
     <BrowserRouter basename="/proyecto-front-react/">
-          
+       <AuthProvider>
        <ProductosProvider>
         <CarritoProvider>
           <App />
@@ -19,6 +20,7 @@ createRoot(document.getElementById('root')).render(
         </CarritoProvider>
        </ProductosProvider>
 
+        </AuthProvider>   
     
     </BrowserRouter>
     </HelmetProvider>

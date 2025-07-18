@@ -1,29 +1,32 @@
 import '../stylePages/page.css'
 import '../stylePages/login.css'
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { AuthContext } from '../context/authContext';
 function Login(){
     const navigate = useNavigate();
 
     const [usuario,setUsuario] = useState('')
     const [contrasena,setContrasena] = useState('')
 
-    
+    const {setAuth,setAdmin} = useContext(AuthContext)
     const manejoLogin = (e,usuario,contrasena) => {
         e.preventDefault();
         if(usuario != '' && contrasena != ''){
             localStorage.setItem('usuario',usuario);
             localStorage.setItem('contraseña',contrasena);
-            localStorage.setItem('isAuth',true)
-            //setIsAuth(true)
+            // localStorage.setItem('isAuth',true)
+            setAuth(true)
             if (usuario == 'admin' && contrasena == '123') {
-                localStorage.setItem('isAdmin',true)
+                setAdmin(true)
+                // localStorage.setItem('isAdmin',true)
                 // setIsAdmin(true);
             } 
             else {
-                localStorage.setItem('isAdmin',false)
-                //setIsAdmin(false); 
+                // localStorage.setItem('isAdmin',false)
+                
+                setAdmin(false); 
             }
                 navigate(`/perfil/${usuario}`)
         }

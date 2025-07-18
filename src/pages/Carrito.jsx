@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import { CarritoContext } from '../context/CarritoContext';
 import styled from 'styled-components'
 import { Helmet } from 'react-helmet-async';
+import { Row } from 'react-bootstrap'
 const BotonVaciar = styled.button`
   
        padding: 1rem 2rem;
@@ -30,11 +31,15 @@ function Carrito(){
                       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
                       <title>carrito</title>
                       </Helmet> 
-            {
+            <Row>{
+
                 carrito.map((producto) => 
-                <Tarjeta key={producto.id} producto={producto} forShop={false}/>
+                    <div className=" col-12 col-md-4 col-lg-3">
+                    <Tarjeta key={producto.id} producto={producto} forShop={false}/>
+                    </div>
                 )
             }
+            </Row>
             {carrito.length > 0
             &&    
             <BotonVaciar onClick={()=>{vaciarCarrito()}}>vaciar</BotonVaciar>

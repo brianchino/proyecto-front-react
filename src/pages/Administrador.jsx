@@ -12,6 +12,8 @@ function Administrador (){
     const [formData,setFormData] = useState({})
     
     function handleEditar(producto){
+        
+
         setProductoEditandoId(producto.id);
         setFormData({ ...producto });
     }
@@ -34,11 +36,10 @@ function Administrador (){
         [campo]: valor
     }));
     }
-    function handleCreate(producto){
-        const { title, price, category, image } = productoCreado;
+    function handleCreate(){
+        
 
-        if (!title || !price || !category || !image) {
-            alert('Todos los campos deben estar completos');
+        if (!validacionCampos(productoCreado)){
             return;
         }
     
@@ -81,6 +82,18 @@ function Administrador (){
       closeOnClick: false
     });
     }
+    function validacionCampos(producto){
+        const { title, price, category, image } = producto;
+        if (!title || !price || !category || !image) {
+            alert('Todos los campos deben estar completos');
+            return false;
+        }
+        if (Number(price) <= 0) {
+            alert('el precio debe de ser mayor a 0');
+            return false;
+        }
+        return true
+    }
     return (
         <div className='page admin'>
             <Helmet>
@@ -122,7 +135,11 @@ function Administrador (){
                                         <button type="button" className='botonEliminar'onClick={()=>confirmarEliminacion(producto)}>eliminar</button>
 
                                     </div>   ):(
-                                    <button type="button" onClick={()=>{actualizarProducto(formData.id, formData);
+                                    <button type="button" onClick={()=>{
+                                                            if(!validacionCampos(formData)){
+                                                                return;
+                                                                }
+                                                            actualizarProducto(formData.id, formData);
                                                             setProductoEditandoId(null);}}>ok</button>
                                 )}
                             </div>

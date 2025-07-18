@@ -7,7 +7,7 @@
 .app .link{
   color: #f3f4f6; 
   margin: auto 10px;
-  font-size: 1.5em;
+  font-size: 1.2em;
   cursor: pointer;
   text-decoration: none;
   transition: color 0.2s ease;
@@ -51,7 +51,7 @@
   color: #ee8282;
 }
 .app  .busqueda{
-  height: 2em;
+  height: 2.2em;
   margin:auto;
   border-radius: 10px;
   width: 40%;
