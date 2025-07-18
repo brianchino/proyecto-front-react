@@ -3,6 +3,8 @@ import '../stylePages/page.css'
 import { ProductosContext } from '../context/ProductosContext';
 import {useContext,useState} from 'react'
 import {Col, Row} from 'react-bootstrap'
+import { ToastContainer } from 'react-toastify';
+import {Helmet} from 'react-helmet-async'
 function Productos({busqueda}){
     const {productos} = useContext(ProductosContext)
 
@@ -23,6 +25,13 @@ function Productos({busqueda}){
 
     return(
         <div className='page'>
+          <Helmet>
+          <meta charset="UTF-8"/>
+          <meta name='productos' content='precios y productos'/>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+          <title>productos</title>
+          </Helmet> 
+           <ToastContainer></ToastContainer>
             <Row>
                    {productosActuales.map((producto) =>(
                         <div key={producto.id} className=" col-12 col-md-4 col-lg-3">

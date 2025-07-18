@@ -36,7 +36,7 @@ function App() {
   
   return (
     <div className='app'>
-
+           
       
             <nav>
                 <Link className='link' to='/'><FontAwesomeIcon icon={faFaceSmileBeam} /></Link>
@@ -80,6 +80,7 @@ function App() {
               <Route path='/perfil/:usuario' element={<RutaProtegida > <Perfil/> </RutaProtegida>}></Route>
               <Route path='/administrador' element={<RutaProtegida > <Administrador/> </RutaProtegida>}></Route>
             </Routes>
+            
             <footer>
               <div>
                 <FontAwesomeIcon  icon={faCopyright} />

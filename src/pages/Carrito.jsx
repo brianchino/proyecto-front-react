@@ -3,6 +3,7 @@ import Tarjeta from '../components/Tarjeta'
 import { useContext } from 'react';
 import { CarritoContext } from '../context/CarritoContext';
 import styled from 'styled-components'
+import { Helmet } from 'react-helmet-async';
 const BotonVaciar = styled.button`
   
        padding: 1rem 2rem;
@@ -23,6 +24,12 @@ function Carrito(){
     const {carrito,vaciarCarrito} = useContext(CarritoContext)
     return(
         <div className='page'>
+            <Helmet>
+                      <meta charset="UTF-8"/>
+                      <meta name='carrito' content='productos del carrito'/>
+                      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                      <title>carrito</title>
+                      </Helmet> 
             {
                 carrito.map((producto) => 
                 <Tarjeta key={producto.id} producto={producto} forShop={false}/>

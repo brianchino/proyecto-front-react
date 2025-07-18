@@ -1,8 +1,15 @@
 import '../stylePages/page.css'
 import '../stylePages/home.css';
+import {Helmet} from 'react-helmet-async'
 function Home(){
     return(
         <div className='page home'>
+          <Helmet>
+          <meta charset="UTF-8"/>
+          <meta name='descripcion' content='pagina oficial'/>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+          <title>tienda de ropa</title>
+          </Helmet> 
             <section className="bienvenida">
             <h1>Bienvenido a ChinoShop</h1>
                 <p>

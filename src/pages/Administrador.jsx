@@ -2,6 +2,9 @@ import { useContext, useState } from 'react';
 import '../stylePages/page.css'
 import '../stylePages/administrador.css'
 import { ProductosContext } from '../context/ProductosContext';
+import { toast ,ToastContainer} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Helmet } from 'react-helmet-async';
 function Administrador (){
 
     const {productos,actualizarProducto,eliminarProducto,crearProducto} = useContext(ProductosContext)
@@ -50,8 +53,43 @@ function Administrador (){
         });
     
     }
+    const confirmarEliminacion = (producto) => {
+    toast(({ closeToast }) => (
+      <div>
+        <p>¿Seguro que querés eliminar <strong>{producto.title}</strong>?</p>
+        <div style={{ marginTop: '10px', display: 'flex', gap: '10px' }}>
+          <button
+            onClick={() => {
+              eliminarProducto(producto.id);
+              toast.dismiss(); // cerrar todos los toasts
+              toast.success("Producto eliminado");
+            }}
+            style={{ background: 'red', color: 'white', padding: '5px 10px' }}
+          >
+            Eliminar
+          </button>
+          <button
+            onClick={() => toast.dismiss()}
+            style={{ padding: '5px 10px' }}
+          >
+            Cancelar
+          </button>
+        </div>
+      </div>
+    ), {
+      autoClose: false,
+      closeOnClick: false
+    });
+    }
     return (
         <div className='page admin'>
+            <Helmet>
+                      <meta charset="UTF-8"/>
+                      <meta name='administracion' content='configuracion de productos'/>
+                      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                      <title>administracion</title>
+                      </Helmet> 
+            <ToastContainer position="top-right"/>
             <form action="">
                 {productos.map(producto => (
                     <div className="producto-form" key={producto.id}>
@@ -81,7 +119,7 @@ function Administrador (){
                                     <div>
 
                                         <button type="button" onClick={()=>handleEditar(producto)}>editar</button>
-                                        <button type="button" className='botonEliminar'onClick={()=>eliminarProducto(producto.id)}>eliminar</button>
+                                        <button type="button" className='botonEliminar'onClick={()=>confirmarEliminacion(producto)}>eliminar</button>
 
                                     </div>   ):(
                                     <button type="button" onClick={()=>{actualizarProducto(formData.id, formData);

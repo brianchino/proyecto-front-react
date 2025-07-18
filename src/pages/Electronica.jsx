@@ -3,6 +3,8 @@ import Tarjeta from '../components/Tarjeta'
 import { useContext ,useState} from 'react'
 import { ProductosContext } from '../context/ProductosContext'
 import { Row } from 'react-bootstrap'
+import { ToastContainer } from 'react-toastify';
+import { Helmet } from 'react-helmet-async'
 function Electronica({busqueda}){
     const {productos} = useContext(ProductosContext)
     const productosElectronica = productos.filter((producto) => (producto.category ==='electronics'))
@@ -24,6 +26,13 @@ function Electronica({busqueda}){
     return(
         
          <div className='page'>
+          <Helmet>
+                    <meta charset="UTF-8"/>
+                    <meta name='electronica' content='precios de producots de electronica'/>
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                    <title>electronica</title>
+                    </Helmet> 
+          <ToastContainer></ToastContainer>
             <Row>
                    {productosActuales.map((producto) =>(
                         <div className=" col-12 col-md-4 col-lg-3" key={producto.id}>

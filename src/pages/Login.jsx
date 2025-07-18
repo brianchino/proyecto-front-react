@@ -2,7 +2,7 @@ import '../stylePages/page.css'
 import '../stylePages/login.css'
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-
+import { Helmet } from 'react-helmet-async';
 function Login(){
     const navigate = useNavigate();
 
@@ -33,6 +33,12 @@ function Login(){
     }
     return(
         <div className='page login'>
+            <Helmet>
+            <meta charset="UTF-8"/>
+            <meta name='login' content='inicio de sesion'/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <title>iniciar sesion</title>
+            </Helmet> 
             <h1>INICIAR SESION</h1>
             <form action="/" method='post'>
                 <label htmlFor='usuario'>usuario: </label>

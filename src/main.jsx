@@ -5,8 +5,11 @@ import App from './App.jsx'
 import { ProductosProvider } from './context/ProductosContext.jsx';
 import {CarritoProvider} from './context/CarritoContext.jsx'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { HelmetProvider } from 'react-helmet-async'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <HelmetProvider>
+
     <BrowserRouter basename="/proyecto-front-react/">
           
        <ProductosProvider>
@@ -18,6 +21,7 @@ createRoot(document.getElementById('root')).render(
 
     
     </BrowserRouter>
+    </HelmetProvider>
     
   </StrictMode>,
 )
