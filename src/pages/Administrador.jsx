@@ -12,11 +12,10 @@ function Administrador (){
     const [formData,setFormData] = useState({})
     
     function handleEditar(producto){
-        
-
         setProductoEditandoId(producto.id);
         setFormData({ ...producto });
     }
+
     function handleChange(campo,valor){
         setFormData((prev) => ({
         ...prev,// lo que ya tenia previamente antes de editar con set
@@ -24,18 +23,20 @@ function Administrador (){
         }));
         
     }
+
     const [productoCreado, setProductoCreado] = useState({
-    title: '',
-    price: '',
-    category: '',
-    image: ''
+        title: '',
+        price: '',
+        category: '',
+        image: ''
     });
+
     function handleChangeCreate(campo,valor){
         setProductoCreado(prev => ({
         ...prev,
         [campo]: valor
-    }));
-    }
+    }))}
+
     function handleCreate(){
         
 
@@ -55,33 +56,25 @@ function Administrador (){
     
     }
     const confirmarEliminacion = (producto) => {
-    toast(({ closeToast }) => (
-      <div>
-        <p>¿Seguro que querés eliminar <strong>{producto.title}</strong>?</p>
-        <div style={{ marginTop: '10px', display: 'flex', gap: '10px' }}>
-          <button
-            onClick={() => {
-              eliminarProducto(producto.id);
-              toast.dismiss(); // cerrar todos los toasts
-              toast.success("Producto eliminado");
-            }}
-            style={{ background: 'red', color: 'white', padding: '5px 10px' }}
-          >
-            Eliminar
-          </button>
-          <button
-            onClick={() => toast.dismiss()}
-            style={{ padding: '5px 10px' }}
-          >
-            Cancelar
-          </button>
+        toast(({ closeToast }) => (
+        <div>
+            <p>¿Seguro que querés eliminar <strong>{producto.title}</strong>?</p>
+            <div style={{ marginTop: '10px', display: 'flex', gap: '10px' }}>
+                <button onClick={() => {
+                    eliminarProducto(producto.id);
+                    toast.dismiss(); // cerrar todos los toasts
+                    toast.success("Producto eliminado");
+                }} style={{ background: 'red', color: 'white', padding: '5px 10px' }}>Eliminar</button>
+                
+                <button onClick={() => toast.dismiss()} style={{ padding: '5px 10px' }}>Cancelar</button>
+            </div>
         </div>
-      </div>
     ), {
-      autoClose: false,
-      closeOnClick: false
-    });
+        autoClose: false,
+        closeOnClick: false
+        });
     }
+
     function validacionCampos(producto){
         const { title, price, category, image } = producto;
         if (!title || !price || !category || !image) {
@@ -97,11 +90,11 @@ function Administrador (){
     return (
         <div className='page admin'>
             <Helmet>
-                      <meta charset="UTF-8"/>
-                      <meta name='administracion' content='configuracion de productos'/>
-                      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-                      <title>administracion</title>
-                      </Helmet> 
+                        <meta charset="UTF-8"/>
+                        <meta name='administracion' content='configuracion de productos'/>
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                        <title>administracion</title>
+            </Helmet> 
             <ToastContainer position="top-right"/>
             <form action="">
                 {productos.map(producto => (
@@ -140,7 +133,7 @@ function Administrador (){
                                                                 return;
                                                                 }
                                                             actualizarProducto(formData.id, formData);
-                                                            setProductoEditandoId(null);}}>ok</button>
+                                                            setProductoEditandoId(null);}}>✓</button>
                                 )}
                             </div>
                         
@@ -150,27 +143,29 @@ function Administrador (){
             </form>
             <div>
                 <div className="inputs">
-                              <input type="text" 
-                                    placeholder="titulo"    
-                                    value={productoCreado.title}                          
-                                    onChange={(e)=>handleChangeCreate('title',e.target.value)}/>
-                              <input type="number" 
-                                    placeholder="precio"      
-                                    value={productoCreado.price}                        
-                                    onChange={(e)=>handleChangeCreate('price',e.target.value)}/>
-                              <input type="text" 
-                                    placeholder="categoria" 
-                                    value={productoCreado.category}                                
-                                    onChange={(e)=>handleChangeCreate('category',e.target.value)}/>
-                              <input type="text" 
-                                    placeholder="imagen"     
-                                    value={productoCreado.image}              
-                                    onChange={(e)=>handleChangeCreate('image',e.target.value)}/>
-                <button type="button" className='botonCrear'onClick={()=>handleCreate(productoCreado)}>crear</button>             
+                    <input type="text" 
+                        placeholder="titulo"    
+                        value={productoCreado.title}                          
+                        onChange={(e)=>handleChangeCreate('title',e.target.value)}/>
+                    <input type="number" 
+                        placeholder="precio"      
+                        value={productoCreado.price}                        
+                        onChange={(e)=>handleChangeCreate('price',e.target.value)}/>
+                    <input type="text" 
+                        placeholder="categoria" 
+                        value={productoCreado.category}                                
+                        onChange={(e)=>handleChangeCreate('category',e.target.value)}/>
+                    <input type="text" 
+                        placeholder="imagen"     
+                        value={productoCreado.image}              
+                        onChange={(e)=>handleChangeCreate('image',e.target.value)}/>
+                    
+                    <button type="button" className='botonCrear'onClick={()=>handleCreate(productoCreado)}>crear</button>             
+                
                 </div>
             </div>
                           
-    </div>
+        </div>
             
         
     )

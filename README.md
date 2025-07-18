@@ -1,12 +1,86 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 🛍️ Tienda de Ropa - Proyecto React
 
-Currently, two official plugins are available:
+Este proyecto es una aplicación web para una tienda de ropa desarrollada con **React**. Permite visualizar productos, agregarlos al carrito, iniciar sesión y administrar productos desde un panel. Se utiliza **MockAPI** como backend temporal para simular operaciones CRUD.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Tecnologías utilizadas
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- ⚛️ [React](https://reactjs.org/)
+- ⚡ [Vite](https://vitejs.dev/)
+- 🌐 [React Router](https://reactrouter.com/)
+- 🎨 [Font Awesome](https://fontawesome.com/)
+- 📦 [MockAPI](https://mockapi.io/)
+- 💅 [Styled Components](https://styled-components.com/)
+- 🧠 React Context API
+- 🎉 [React Toastify](https://fkhadra.github.io/react-toastify/)
+- 🧢 [React Helmet](https://github.com/nfl/react-helmet)
+- 🧩 [React Bootstrap](https://react-bootstrap.netlify.app/)
+- 🅱️ [Bootstrap](https://getbootstrap.com/)
+
+---
+
+## 📦 Instalación
+
+### 1. Clona el repositorio
+
+```bash
+git clone https://github.com/brianchino/proyecto-front-react.git
+cd proyecto-front-react
+```
+
+### 2. Instala las dependencias
+
+```bash
+npm install
+```
+
+### 3. Inicia el servidor de desarrollo
+
+```bash
+npm run dev
+```
+
+Abrir en el navegador: [http://localhost:5173](http://localhost:5173)
+
+---
+
+## 🧩 Instalación manual de dependencias 
+
+> Si comienzas desde cero o algunas dependencias no están registradas en `package.json`, puedes instalarlas manualmente con los siguientes comandos:
+
+```bash
+# React Router
+npm install react-router-dom
+
+# Font Awesome
+npm install @fortawesome/react-fontawesome @fortawesome/free-solid-svg-icons @fortawesome/fontawesome-svg-core
+
+# Toastify (notificaciones)
+npm install react-toastify
+
+# Helmet (gestión del <head>)
+npm install react-helmet
+
+# Bootstrap y React-Bootstrap
+npm install bootstrap react-bootstrap
+
+# Styled Components
+npm install styled-components
+```
+
+---
+
+## 🌐 Proyecto en línea
+
+Puedes ver la versión desplegada del proyecto aquí:  
+🔗 [https://brianchino.github.io/proyecto-front-react/](https://brianchino.github.io/proyecto-front-react/)
+
+---
+
+# Administrador (crud de productos de mockApi)
+el modo administrador se inicia con el login y rellenando los siguiente campos de la siguiente manera
+usuario: admin
+contraseña: 123
+---

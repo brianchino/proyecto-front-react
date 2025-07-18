@@ -14,12 +14,11 @@ import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg
 import { faCartShopping,faFaceSmileBeam,faRightToBracket, faRightFromBracket,faGear} from '@fortawesome/free-solid-svg-icons';
 import { useContext, useState } from "react";
 import { AuthContext } from "./context/authContext";
+import { ProductosContext} from "./context/ProductosContext";
 
 
 function App() {
 
-  // const [isAuth,setIsAuth] = useState(false)
-  // const [isAdmin,setIsAdmin] =useState(false) 
   
   const navigate = useNavigate()
 
@@ -36,6 +35,7 @@ function App() {
   
   const {auth,admin,setAuth,setAdmin} = useContext(AuthContext)
 
+  const {error} = useContext(ProductosContext)
   return (
     <div className='app'>
            
@@ -91,7 +91,7 @@ function App() {
                 <FontAwesomeIcon icon={faInstagram} />
               </div>
             </footer>
-        
+        {console.error(error)}
     </div>
   )
 }
